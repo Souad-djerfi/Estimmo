@@ -1,0 +1,29 @@
+{% extends 'Shared/default.html' %}
+{% block body%}
+
+{% include 'Shared/menu.html'%}
+    
+    <div class="container-fluid">
+	    <div class="row">
+	      <br>
+	    </div>
+	    <div class="row"> 
+	      	<div class="col-2"> 
+	            {% include 'Shared/menu_recherche.html'%}
+	    	</div>
+		    <div class="col-10" style=" max-height: 88vh; overflow-y: scroll; ">  
+		    	<h5><strong> <em class="list-group-item list-group-item-action list-group-item-light"> Visualisation de données: </em></strong></h5>
+		    	<img src="{{url_for('static', filename='Image/dashboard.png')}}" alt="dashboard" />
+			</div>	
+		</div>	
+	</div>
+{%endblock%}	
+	<footer> 
+		<div align="middle">
+			<br><br>Date d'actuallisation : {{ date }}
+		</div>
+	</footer> 
+
+
+
+

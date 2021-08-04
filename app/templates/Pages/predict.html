@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+	<title>Invest in Startups</title>
+</head>
+
+
+<body>
+	<div align="middle">
+		<img src="{{url_for('static', filename='img/invest-in-startups.png')}}">
+	</div>
+	
+    <h1 align="middle" style="color:darkorange;">Estimation</h1>
+	
+	<div align="middle">
+
+		Les dépenses en marketing sont : {{ marketing }} $<br>
+		Les dépenses en recherche et développement sont : {{ rd }} $<br><br>
+
+		Le profit estimé est de : ... $
+
+	</div>
+	
+	<footer> 
+		<div align="middle">
+			<br><br>Date d'actuallisation : {{ date }}
+		</div>
+	</footer> 
+
+</body>
+</html>
+

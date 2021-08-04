@@ -1,0 +1,88 @@
+{% extends 'Shared/default.html' %}
+{% block body%}
+
+	{% include 'Shared/menu.html'%}
+	<div class="container-fluid">
+	    <div class="row">
+	      <br>
+	    </div>
+	    <div class="row"> 
+	      	<div class="col-2"> 
+	            {% include 'Shared/menu_recherche.html'%}
+	    	</div>
+		    <div class="col-10"> 
+
+		    	<div class="card">
+		    		<h5 class="card-header card text-center">  Estimationn prix du bien :</h5>
+		    		<div class="card-body">
+				    	<div class="row">
+						  <div class="col-sm-6">
+						    <div class="card">
+						    	
+						      	<div class="card-body">
+						        <h5 class="card-title">Critères du bien:</h5>
+						        <div class="form-group row">
+		                            <div class="col-sm-1">
+		                            </div>  
+		                            <label for ="user" class="col-sm-4 col-form-label"><strong>Ocean_proximity:</strong></label>
+		                            <div class="col-sm-6">
+		                                <input type="text" class="form-control" id="intitulé" value="{{ocean_proximity}}" name="intitulé" disabled="">  
+		                            </div>
+		                        	<div class="col-sm-1">
+		                            </div>  
+		                        </div> 
+		                        <div class="form-group row">
+		                            <div class="col-sm-1">
+		                            </div>  
+		                            <label for ="user" class="col-sm-4 col-form-label"><strong>Median_income:</strong></label>
+		                            <div class="col-sm-6">
+		                                <input type="text" class="form-control" id="intitulé" value="{{income}}" name="intitulé" disabled="">  
+		                            </div>
+		                        	<div class="col-sm-1">
+		                            </div>  
+		                        </div>
+		                        <div class="form-group row">
+		                            <div class="col-sm-1">
+		                            </div>  
+		                            <label for ="user" class="col-sm-4 col-form-label"><strong>Total_rooms:</strong></label>
+		                            <div class="col-sm-6">
+		                                <input type="text" class="form-control" id="intitulé" value="{{tRooms}}" name="intitulé" disabled="">  
+		                            </div>
+		                        	<div class="col-sm-1">
+		                            </div>  
+		                        </div>
+						      </div>
+						    </div>
+						  </div>
+						  <div class="col-sm-6">
+						  	<br><br><br>
+						    <div class="card">
+						      <div class="card-body">
+						        
+						        <div class="form-group row">
+		                            <div class="col-sm-1">
+		                            </div>  
+		                            <label for ="user" class="col-sm-4 col-form-label"><strong>Estimation:</strong></label>
+		                            <div class="col-sm-6">
+		                                <input type="text" class="form-control" id="intitulé" name="intitulé" value="{{predict}}" disabled="">  
+		                            </div>
+		                        	<div class="col-sm-1">
+		                            </div>  
+		                        </div>
+						      </div>
+						    </div>
+						  </div>
+						</div>  
+					</div>
+				</div>
+
+
+
+		    	
+		</div>	
+	</div>
+		    	
+	
+{%endblock%}
+
+

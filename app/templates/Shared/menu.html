@@ -1,0 +1,139 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary content-center">
+  <a class="navbar-brand" href="{{ url_for('index') }}">
+    <img src="{{url_for('static', filename='Image/logo1.png')}}" width="100" height="45" class="d-inline-block align-top" alt="" loading="lazy">
+  </a>  
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      
+      <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{url_for('dashboard')}}"><i class="fas fa-signal"></i> Dasboard</a>
+        </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-door-open"></i> Bien
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#estim_bien">Estimer un bien</a>
+          <a class="dropdown-item" href="{{url_for('ajout_bien')}}">Ajouter Bien</a>
+          <a class="dropdown-item" href="{{ url_for('recherche') }}">Modifier Bien</a>
+          <a class="dropdown-item" href="{{ url_for('recherche') }}">Supprimer Bien</a>
+          <a class="dropdown-item" href="#">Liste Bien</a>
+        </div>
+      </li>
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-user-edit"></i> Compte
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Ajouter Compte</a>
+          <a class="dropdown-item" href="#">Supprimer Compte</a>
+        </div>
+      </li>
+      
+        
+    
+    <!--<form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Recherche</button>
+    </form>-->
+    
+   <form class="d-flex">
+        <li class="nav-item">
+          <a class="nav-link active" href="#" data-toggle="modal" data-target="#apropos">
+                                                                                                  A propos de...
+          </a>
+        </li>
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#"role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fas fa-user-circle fa-2x" data-toggle="tooltip" data-placement="top" title="Mon compte"></i></a>   
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#">Immobilier</a>
+            <a class="dropdown-item" href="#">Se Deconnecter</a>
+          </div>
+        </li>
+      </form>
+
+      
+    </ul>   
+  </div>
+
+  
+</nav>
+
+
+<!-- Modal -->
+<div class="modal fade" id="apropos" tabindex="-1" aria-labelledby="apropos" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="apropos">A Propos De...</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <p> EstImmO </p>
+        <p> version 1.0 </p>...
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="estim_bien" tabindex="-1" aria-labelledby="estim_bien" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" >Estimation d'un bien:</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form  method="POST" id= "form2" ACTION="{{ url_for('estimation_bien') }}">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="date" class="col-form-label" >Ocean_proximity:</label>
+              <select name="Ocean_proximity" class="custom-select my-1 mr-sm-2" required>
+                <option value="" disabled selected>  Choisissez un Type</option>
+                <option value="0" >  NEAR BAY </option>
+                <option value="1" >  <1H OCEAN </option>
+                <option value="2" >  INLAND</option>
+                <option value="3" >  NEAR OCEAN </option>
+                <option value="4" >  ISLAND </option>
+              </select> 
+              <label for="income" class="col-form-label" >Median_income:</label>
+              <input type="input" class="form-control" id="income" name= "Median_income" required>
+              <label for="rooms" class="col-form-label" >Total_rooms:</label>
+              <input type="input" class="form-control" id="rooms" name= "Total_rooms" required>  
+            </div>
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            <button type="submit" class="btn btn-primary">Estimer</button>
+          </div>
+        </form>  
+      </div>
+    </div>
+  </div>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+              {% for category, message in messages %}
+                  <div class="alert alert-{{ category }}" role="alert">
+                      {{ message }}
+                  </div>
+              {% endfor %}
+          {% endif %}
+    {% endwith %}
